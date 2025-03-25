@@ -90,7 +90,7 @@ Ever notice your pantry is becoming overflowed? This app will allow users to tra
 
 ## Wireframes
 
-<img src="https://imgur.com/a/92HMPis" width=600>
+![image info](./pantryWireframe)
 
 <br>
 
