@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    android:orientation="vertical"
+    android:gravity="center">
+
+    <!-- Title -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Add Groceries"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="20dp"/>
+
+    <!-- Name input -->
+    <EditText
+        android:id="@+id/etName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Name"
+        android:inputType="text"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Quantity input -->
+    <EditText
+        android:id="@+id/etQuantity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Quantity"
+        android:inputType="number"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Unit Dropdown -->
+    <Spinner
+        android:id="@+id/spUnit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Expiration Date input -->
+    <EditText
+        android:id="@+id/etExpirationDate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Expiration Date"
+        android:focusable="false"
+        android:clickable="true"
+        android:layout_marginBottom="16dp" />
+
+    <!-- Button to submit grocery -->
+    <Button
+        android:id="@+id/btnAddGrocery"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Add Grocery" />
+</LinearLayout>
