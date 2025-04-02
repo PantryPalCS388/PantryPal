@@ -106,19 +106,80 @@ Ever notice your pantry is becoming overflowed? This app will allow users to tra
 
 ## GitHub Project board
 
+User Stories Worked on, not fully completed
+- Create an account, login, and store entries in database
+- Search bar to input groceries.
+- Page for grocceries and handle deleting groccies
+
 [Add screenshot of your Project Board with three milestones visible in
 this section]
-<img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
+<img src="https://i.postimg.cc/0Q7HS66p/image.png" width=600>
 
 ## Issue cards
 
-- [Add screenshot of your Project Board with the issues that you've been working on for this unit's milestone] <img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
-- [Add screenshot of your Project Board with the issues that you're working on in the **NEXT sprint**. It should include issues for next unit with assigned owners.] <img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
+Shows issues from board, todo is for next sprint. In done, this sprint that is being uploaded
+- [Add screenshot of your Project Board with the issues that you've been working on for this unit's milestone] <img src="https://i.postimg.cc/MK6rcpzQ/image.png" width=600>
+- [Add screenshot of your Project Board with the issues that you're working on in the **NEXT sprint**. It should include issues for next unit with assigned owners.] <img src="https://i.postimg.cc/MK6rcpzQ/image.png" width=600>
 
 ## Issues worked on this sprint
 
 - List the issues you completed this sprint
+
+Ensure Tab Navigation Correctly Works
+- [x] Should be able to go through all tabs
+
+Basic Add Grocery Functionality (Hardcoded Data for Now)  
+
+- [x] When a user enters a grocery name and clicks search, display a hardcoded response (e.g., `"Milk - Dairy - 7 Days"`)  
+- [x] Clicking "Add" should insert it into the `RecyclerView` in the Pantry Screen  
+- [x] No actual database storage yet
+
+Login & Register Screen (No Database Yet - Just UI Navigation)  
+
+- [x] Should display this screen first before showing all other tabs and screens 
+- [x] Clicking "Login" should navigate to the Pantry Screen  
+- [x] Clicking "Register" should navigate to the Pantry Screen  
+- [x] Add basic input validation (e.g., empty fields)
+
+Pop-up Screen for Pantry Items  
+
+- [x] Create an XML layout for a pop-up screen displaying detailed item information  
+- [x] Implement an `onClick` listener on pantry items to trigger the pop-up  
+- [x] Ensure the pop-up includes the item's name, expiration date, calories, and an option to delete or edit  
+
+Enter Grocery Screen (UI Only)  
+
+- [x] Create an input field for entering grocery name  
+- [x] Add field for expiration date (may be changed to AI later)
+- [x] Clicking add button should close screen and redirect to the pantry screen with that new entry
+
+Pantry Screen (UI Only)  
+
+- [x] Create a `RecyclerView` for listing pantry items  
+- [x] Add placeholder data for grocery items  
+- [x] Implement a color-coded UI indicator for expiry urgency
+
+Login & Register Screens (UI Only)
+- [x] Create the Login Screen (`EditText` for username & password, login button)  
+- [x] Create the Register Screen (`EditText` for username, password, confirm password, register button)  
+- [x] Ensure basic UI consistency  
+- [x] Should be first screen and filled out should redirect to Pantry page
+
+Implement Bottom Navigation Tabs  
+
+- [x] Create a `BottomNavigationView`  
+- [x] Set up tabs for Home (Pantry), History, and Profile  
+- [x] Use `FragmentContainerView` to switch between screens  
+
+Set up Android Studio Project Structure 
+
+- [x] Create a new Android Studio project
+- [x] Set up Gradle dependencies
+- [x] Push the initial setup to GitHub
+
 - [Add giphy that shows current build progress for Milestone 2. Note: We will be looking for progression of work between Milestone 2 and 3. Make sure your giphys are not duplicated and clearly show the change from Sprint 1 to 2.]
+
+ ![Gif](https://submissions.us-east-1.linodeobjects.com/and102/MkhpWOsr.gif)
 
 <br>
 
