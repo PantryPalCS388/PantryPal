@@ -4,7 +4,7 @@
             "outputFile": "com.example.pantrypal.app-mergeDebugResources-30:/values-v16/values-v16.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\sfwnn\\.gradle\\caches\\8.9\\transforms\\73c70ac8bfa3a329a7cf4ee853f3ccde\\transformed\\appcompat-1.7.0\\res\\values-v16\\values-v16.xml",
+                    "source": "/Users/haithamawad/.gradle/caches/8.9/transforms/73c70ac8bfa3a329a7cf4ee853f3ccde/transformed/appcompat-1.7.0/res/values-v16/values-v16.xml",
                     "from": {
                         "startLines": "2",
                         "startColumns": "4",
