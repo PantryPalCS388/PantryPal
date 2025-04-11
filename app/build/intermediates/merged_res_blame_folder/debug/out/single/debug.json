@@ -32,6 +32,10 @@
         "source": "C:\\Users\\sfwnn\\.gradle\\daemon\\8.9\\com.example.pantrypal.app-main-34:\\mipmap-xxhdpi\\ic_launcher_round.webp"
     },
     {
+        "merged": "com.example.pantrypal.app-merged_res-32:/menu_bottom_navigation_menu.xml.flat",
+        "source": "com.example.pantrypal.app-main-34:/menu/bottom_navigation_menu.xml"
+    },
+    {
         "merged": "C:\\Users\\sfwnn\\.gradle\\daemon\\8.9\\com.example.pantrypal.app-merged_res-32:\\mipmap-anydpi-v26_ic_launcher.xml.flat",
         "source": "C:\\Users\\sfwnn\\.gradle\\daemon\\8.9\\com.example.pantrypal.app-main-34:\\mipmap-anydpi-v26\\ic_launcher.xml"
     },
@@ -56,12 +60,24 @@
         "source": "C:\\Users\\sfwnn\\.gradle\\daemon\\8.9\\com.example.pantrypal.app-main-34:\\mipmap-xxxhdpi\\ic_launcher.webp"
     },
     {
-        "merged": "com.example.pantrypal.app-merged_res-32:/layout_fragment_item_detail.xml.flat",
-        "source": "com.example.pantrypal.app-main-34:/layout/fragment_item_detail.xml"
+        "merged": "C:\\Users\\sfwnn\\.gradle\\daemon\\8.9\\com.example.pantrypal.app-merged_res-32:\\layout_item_recipe.xml.flat",
+        "source": "C:\\Users\\sfwnn\\.gradle\\daemon\\8.9\\com.example.pantrypal.app-main-34:\\layout\\item_recipe.xml"
+    },
+    {
+        "merged": "C:\\Users\\sfwnn\\.gradle\\daemon\\8.9\\com.example.pantrypal.app-merged_res-32:\\layout_fragment_recipes.xml.flat",
+        "source": "C:\\Users\\sfwnn\\.gradle\\daemon\\8.9\\com.example.pantrypal.app-main-34:\\layout\\fragment_recipes.xml"
+    },
+    {
+        "merged": "C:\\Users\\sfwnn\\.gradle\\daemon\\8.9\\com.example.pantrypal.app-merged_res-32:\\layout_fragment_recipe_detail.xml.flat",
+        "source": "C:\\Users\\sfwnn\\.gradle\\daemon\\8.9\\com.example.pantrypal.app-main-34:\\layout\\fragment_recipe_detail.xml"
     },
     {
         "merged": "C:\\Users\\sfwnn\\.gradle\\daemon\\8.9\\com.example.pantrypal.app-merged_res-32:\\drawable_ic_launcher_background.xml.flat",
         "source": "C:\\Users\\sfwnn\\.gradle\\daemon\\8.9\\com.example.pantrypal.app-main-34:\\drawable\\ic_launcher_background.xml"
+    },
+    {
+        "merged": "com.example.pantrypal.app-merged_res-32:/layout_fragment_profile.xml.flat",
+        "source": "com.example.pantrypal.app-main-34:/layout/fragment_profile.xml"
     },
     {
         "merged": "C:\\Users\\sfwnn\\.gradle\\daemon\\8.9\\com.example.pantrypal.app-merged_res-32:\\layout_activity_signup.xml.flat",

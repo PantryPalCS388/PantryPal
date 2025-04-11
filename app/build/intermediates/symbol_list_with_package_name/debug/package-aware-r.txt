@@ -3179,6 +3179,8 @@ id action_mode_bar
 id action_mode_bar_stub
 id action_mode_close_button
 id action_pantry
+id action_profile
+id action_recipes
 id action_text
 id actions
 id activity_chooser_view_content
@@ -3217,11 +3219,13 @@ id btnAddGrocery
 id btnBackToLogin
 id btnDeleteItem
 id btnLogin
+id btnSignOut
 id btnSignUp
 id buttonPanel
 id cache_measures
 id callMeasure
 id cancel_button
+id cardView
 id carryVelocity
 id center
 id centerCrop
@@ -3306,6 +3310,7 @@ id etName
 id etPassword
 id etQuantity
 id etReenterPassword
+id etSearch
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
@@ -3496,6 +3501,7 @@ id right_icon
 id right_side
 id rounded
 id row_index_key
+id rvRecipes
 id save_non_transition_alpha
 id save_overlay_view
 id sawtooth
@@ -3613,6 +3619,10 @@ id tvDetailName
 id tvDetailQuantity
 id tvExpirationDate
 id tvGroceryName
+id tvIngredients
+id tvInstructions
+id tvRecipeDetailTitle
+id tvRecipeTitle
 id tvSignUp
 id unchecked
 id uniform
@@ -3774,9 +3784,13 @@ layout design_text_input_start_icon
 layout fragment_add_grocery
 layout fragment_item_detail
 layout fragment_pantry
+layout fragment_profile
+layout fragment_recipe_detail
+layout fragment_recipes
 layout ime_base_split_test_activity
 layout ime_secondary_split_test_activity
 layout item_grocery
+layout item_recipe
 layout m3_alert_dialog
 layout m3_alert_dialog_actions
 layout m3_alert_dialog_title
