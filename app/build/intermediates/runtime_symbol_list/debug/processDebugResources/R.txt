@@ -3178,6 +3178,8 @@ int id action_mode_bar 0x7f080042
 int id action_mode_bar_stub 0x7f080043
 int id action_mode_close_button 0x7f080044
 int id action_pantry 0x7f080045
+int id action_profile 0x7f080211
+int id action_recipes 0x7f080212
 int id action_text 0x7f080046
 int id actions 0x7f080047
 int id activity_chooser_view_content 0x7f080048
@@ -3216,11 +3218,13 @@ int id btnAddGrocery 0x7f080068
 int id btnBackToLogin 0x7f080069
 int id btnDeleteItem 0x7f08006a
 int id btnLogin 0x7f08006b
+int id btnSignOut 0x7f080213
 int id btnSignUp 0x7f08006c
 int id buttonPanel 0x7f08006d
 int id cache_measures 0x7f08006e
 int id callMeasure 0x7f08006f
 int id cancel_button 0x7f080070
+int id cardView 0x7f080214
 int id carryVelocity 0x7f080071
 int id center 0x7f080072
 int id centerCrop 0x7f080073
@@ -3305,6 +3309,7 @@ int id etName 0x7f0800c1
 int id etPassword 0x7f0800c2
 int id etQuantity 0x7f0800c3
 int id etReenterPassword 0x7f0800c4
+int id etSearch 0x7f080215
 int id exitUntilCollapsed 0x7f0800c5
 int id expand_activities_button 0x7f0800c6
 int id expanded_menu 0x7f0800c7
@@ -3495,6 +3500,7 @@ int id right_icon 0x7f08017f
 int id right_side 0x7f080180
 int id rounded 0x7f080181
 int id row_index_key 0x7f080182
+int id rvRecipes 0x7f080216
 int id save_non_transition_alpha 0x7f080183
 int id save_overlay_view 0x7f080184
 int id sawtooth 0x7f080185
@@ -3612,6 +3618,10 @@ int id tvDetailName 0x7f0801f4
 int id tvDetailQuantity 0x7f0801f5
 int id tvExpirationDate 0x7f0801f6
 int id tvGroceryName 0x7f0801f7
+int id tvIngredients 0x7f080217
+int id tvInstructions 0x7f080218
+int id tvRecipeDetailTitle 0x7f080219
+int id tvRecipeTitle 0x7f08021a
 int id tvSignUp 0x7f0801f8
 int id unchecked 0x7f0801f9
 int id uniform 0x7f0801fa
@@ -3773,9 +3783,13 @@ int layout design_text_input_start_icon 0x7f0b002e
 int layout fragment_add_grocery 0x7f0b002f
 int layout fragment_item_detail 0x7f0b0030
 int layout fragment_pantry 0x7f0b0031
+int layout fragment_profile 0x7f0b0072
+int layout fragment_recipe_detail 0x7f0b0073
+int layout fragment_recipes 0x7f0b0074
 int layout ime_base_split_test_activity 0x7f0b0032
 int layout ime_secondary_split_test_activity 0x7f0b0033
 int layout item_grocery 0x7f0b0034
+int layout item_recipe 0x7f0b0075
 int layout m3_alert_dialog 0x7f0b0035
 int layout m3_alert_dialog_actions 0x7f0b0036
 int layout m3_alert_dialog_title 0x7f0b0037

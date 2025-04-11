@@ -8,6 +8,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 class MainActivity : AppCompatActivity() {
 
     lateinit var pantryFragment: PantryFragment
+    lateinit var profileFragment: ProfileFragment
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -16,6 +17,7 @@ class MainActivity : AppCompatActivity() {
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
 
         pantryFragment = PantryFragment()
+        profileFragment = ProfileFragment()
 
         replaceFragment(pantryFragment)
 
@@ -23,6 +25,8 @@ class MainActivity : AppCompatActivity() {
             when (item.itemId) {
                 R.id.action_pantry -> replaceFragment(pantryFragment)
                 R.id.action_add_grocery -> replaceFragment(AddGroceryFragment())
+                R.id.action_recipes -> replaceFragment(RecipesFragment())
+                R.id.action_profile -> replaceFragment(profileFragment) // Add this case
                 else -> false
             }
             true
@@ -39,3 +43,4 @@ class MainActivity : AppCompatActivity() {
         pantryFragment.addGroceryItem(groceryItem)
     }
 }
+

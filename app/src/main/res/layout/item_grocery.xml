@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.cardview.widget.CardView
+<com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardView"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_margin="8dp"
     app:cardCornerRadius="12dp"
     app:cardElevation="6dp"
+    app:strokeWidth="4dp"
+    app:strokeColor="@android:color/transparent"
     app:cardBackgroundColor="@android:color/white">
 
     <LinearLayout
@@ -16,7 +19,6 @@
         android:padding="16dp"
         android:gravity="center_vertical">
 
-        <!-- Grocery Name (Left) -->
         <TextView
             android:id="@+id/tvGroceryName"
             android:layout_width="0dp"
@@ -26,7 +28,6 @@
             android:textStyle="bold"
             android:textColor="@android:color/black"/>
 
-        <!-- Expiration Date (Right) -->
         <TextView
             android:id="@+id/tvExpirationDate"
             android:layout_width="wrap_content"
@@ -35,4 +36,4 @@
             android:textColor="@android:color/darker_gray"/>
     </LinearLayout>
 
-</androidx.cardview.widget.CardView>
+</com.google.android.material.card.MaterialCardView>
