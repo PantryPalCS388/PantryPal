@@ -3,4 +3,4 @@
 /workspace.xml
 
 # Firebase / Google Services config
-**/google-services.json
+app/google-services.json
