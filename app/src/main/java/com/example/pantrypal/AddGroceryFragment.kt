@@ -1,11 +1,12 @@
 package com.example.pantrypal
-
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.fragment.app.Fragment
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 import java.text.SimpleDateFormat
 import java.util.Calendar
 import java.util.Locale
@@ -53,14 +54,35 @@ class AddGroceryFragment : Fragment(R.layout.fragment_add_grocery) {
             if (name.isEmpty() || quantity.isEmpty() || expirationDate.isEmpty()) {
                 Toast.makeText(requireContext(), "Please fill in all fields", Toast.LENGTH_SHORT).show()
             } else {
-                val newGroceryItem = GroceryItem(name, quantity.toInt(), unit, expirationDate)
+                // Get the current user ID
+                val userId = FirebaseAuth.getInstance().currentUser?.uid
 
-                (activity as? MainActivity)?.pantryFragment?.addGroceryItem(newGroceryItem)
+                if (userId != null) {
+                    val newGroceryItem = hashMapOf(
+                        "name" to name,
+                        "quantity" to quantity.toInt(),
+                        "unit" to unit,
+                        "expirationDate" to expirationDate
+                    )
 
-                Toast.makeText(requireContext(), "Grocery Added: $quantity $unit of $name", Toast.LENGTH_SHORT).show()
-                nameEditText.text.clear()
-                quantityEditText.text.clear()
-                expirationDateEditText.text.clear()
+                    // Add the new grocery item to Firestore under the current user's UID
+                    FirebaseFirestore.getInstance()
+                        .collection("users")
+                        .document(userId)  // Reference the specific user by UID
+                        .collection("pantry")  // Subcollection for groceries
+                        .add(newGroceryItem)
+                        .addOnSuccessListener {
+                            Toast.makeText(requireContext(), "Grocery Added!", Toast.LENGTH_SHORT).show()
+                            nameEditText.text.clear()
+                            quantityEditText.text.clear()
+                            expirationDateEditText.text.clear()
+                        }
+                        .addOnFailureListener { e ->
+                            Toast.makeText(requireContext(), "Error: ${e.message}", Toast.LENGTH_SHORT).show()
+                        }
+                } else {
+                    Toast.makeText(requireContext(), "User not logged in", Toast.LENGTH_SHORT).show()
+                }
             }
         }
     }

@@ -4,7 +4,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
-
+import com.google.firebase.FirebaseApp
 class MainActivity : AppCompatActivity() {
 
     lateinit var pantryFragment: PantryFragment
@@ -12,6 +12,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        FirebaseApp.initializeApp(this)
         setContentView(R.layout.activity_main)
 
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
@@ -39,8 +40,8 @@ class MainActivity : AppCompatActivity() {
         transaction.commit()
     }
 
+    // This method is now correct and will call the addGroceryItem method in PantryFragment
     fun addGroceryItemToPantry(groceryItem: GroceryItem) {
         pantryFragment.addGroceryItem(groceryItem)
     }
 }
-

@@ -6,6 +6,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.google.firebase.auth.FirebaseAuth
 
 class SignUpActivity : AppCompatActivity() {
 
@@ -14,19 +15,20 @@ class SignUpActivity : AppCompatActivity() {
     private lateinit var etReenterPassword: EditText
     private lateinit var btnSignUp: Button
     private lateinit var btnBackToLogin: Button
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_signup)
 
-        // Initialize UI components
+        auth = FirebaseAuth.getInstance()
+
         etEmail = findViewById(R.id.etEmail)
         etPassword = findViewById(R.id.etPassword)
         etReenterPassword = findViewById(R.id.etReenterPassword)
         btnSignUp = findViewById(R.id.btnSignUp)
         btnBackToLogin = findViewById(R.id.btnBackToLogin)
 
-        // Sign up button click handler
         btnSignUp.setOnClickListener {
             val email = etEmail.text.toString().trim()
             val password = etPassword.text.toString().trim()
@@ -37,22 +39,22 @@ class SignUpActivity : AppCompatActivity() {
             } else if (password != reenteredPassword) {
                 Toast.makeText(this, "Passwords do not match", Toast.LENGTH_SHORT).show()
             } else {
-                // Proceed with sign-up logic (e.g., storing user info, API call, etc.)
-                Toast.makeText(this, "Sign up successful", Toast.LENGTH_SHORT).show()
-
-                // After sign up, navigate to Login Activity
-                val intent = Intent(this, LoginActivity::class.java)
-                startActivity(intent)
-                finish() // Finish SignUpActivity so it doesn't stay in the back stack
+                auth.createUserWithEmailAndPassword(email, password)
+                    .addOnCompleteListener { task ->
+                        if (task.isSuccessful) {
+                            Toast.makeText(this, "Sign up successful", Toast.LENGTH_SHORT).show()
+                            startActivity(Intent(this, LoginActivity::class.java))
+                            finish()
+                        } else {
+                            Toast.makeText(this, "Error: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
+                        }
+                    }
             }
         }
 
-        // Back to Login button click handler
         btnBackToLogin.setOnClickListener {
-            // Navigate back to LoginActivity
-            val intent = Intent(this, LoginActivity::class.java)
-            startActivity(intent)
-            finish() // Finish SignUpActivity
+            startActivity(Intent(this, LoginActivity::class.java))
+            finish()
         }
     }
 }
