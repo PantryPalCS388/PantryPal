@@ -3,13 +3,17 @@ package com.example.pantrypal
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.EditText
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
 
 class RecipesFragment : Fragment() {
 
@@ -52,7 +56,38 @@ class RecipesFragment : Fragment() {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
         })
+        getPantryItemsAsList { pantryList ->
+            Log.d("PantryData", pantryList.toString())
+        }
 
         return view
+    }
+
+    private fun getPantryItemsAsList(callback: (List<List<Any>>) -> Unit) {
+        val userId = FirebaseAuth.getInstance().currentUser?.uid
+        if (userId != null) {
+            FirebaseFirestore.getInstance()
+                .collection("users")
+                .document(userId)
+                .collection("pantry")
+                .get()
+                .addOnSuccessListener { snapshot ->
+                    val result = mutableListOf<List<Any>>()
+                    for (document in snapshot.documents) {
+                        val name = document.getString("name") ?: ""
+                        val quantity = document.getLong("quantity")?.toInt() ?: 0
+                        val expirationDate = document.getString("expirationDate") ?: ""
+
+                        result.add(listOf(name, quantity, expirationDate))
+                    }
+                    callback(result)
+                }
+                .addOnFailureListener { e ->
+                    Toast.makeText(requireContext(), "Error fetching pantry: ${e.message}", Toast.LENGTH_SHORT).show()
+                    callback(emptyList())
+                }
+        } else {
+            callback(emptyList())
+        }
     }
 }
