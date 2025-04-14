@@ -1,11 +1,12 @@
 buildscript {
     val agp_version by extra("8.2.0")  // Ensure you are using AGP 8.2.0
+    val agp_version1 by extra("8.6.0")
     repositories {
         google()  // Make sure this is included to access Firebase and Android SDKs
         mavenCentral()
     }
     dependencies {
-        classpath("com.android.tools.build:gradle:$agp_version")
+        classpath("com.android.tools.build:gradle:$agp_version1")
         classpath("com.google.gms:google-services:4.4.2")  // Ensure this is the correct version of the plugin
 
     }

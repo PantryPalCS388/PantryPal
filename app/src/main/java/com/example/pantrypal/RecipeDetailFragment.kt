@@ -43,7 +43,8 @@ class RecipeDetailFragment : BottomSheetDialogFragment() {
                 .mapIndexed { index, instruction -> "${index + 1}. $instruction" }
                 .joinToString("\n")
 
-            instructionsTextView.text = "Instructions:\n$numberedInstructions"
+            instructionsTextView.text = "Instructions:\n${it.instructions}"
+
         }
 
         return view
