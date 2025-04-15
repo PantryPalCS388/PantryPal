@@ -214,3 +214,4 @@ Pending User Stories
 ## App Demo Video
 
 - Embed the YouTube/Vimeo link of your Completed Demo Day prep video
+[![Watch the video](https://submissions.us-east-1.linodeobjects.com/and102/LvxHGXRq.gif)](https://youtu.be/nTQUwghvy5Q)
