@@ -211,7 +211,21 @@ Pending User Stories
 [Add video/gif of your current application that shows build progress]
  ![Gif](https://submissions.us-east-1.linodeobjects.com/and102/LvxHGXRq.gif)
 
+
+##Issues WWorked on This Sprint
+- #18 Recipes AI Integration
+- #16 Color code Pantry by Expiry Urgency
+- #17 Implement Recipes Page UI
+- #15 Sort Pantry Page
+- #12 Create Firebase Online
+- #10 Connect to Firebase for Authentication
+- #13 Profile Page with Sign Out Functionality
+- #14 Connect to Firebase for Storing Pantry Items
+- #19 Delete Pantry Item
+- #11 Implement Sign up and Login using Firebase
+
 ## App Demo Video
 
 - Embed the YouTube/Vimeo link of your Completed Demo Day prep video
-[![Watch the video](https://submissions.us-east-1.linodeobjects.com/and102/LvxHGXRq.gif)](https://youtu.be/nTQUwghvy5Q)
+[Demo Day Prep Video Here](https://youtu.be/EYFQyRc4g-A)
+
