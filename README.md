@@ -188,15 +188,28 @@ Set up Android Studio Project Structure
 ## GitHub Project board
 
 [Add screenshot of your Project Board with the updated status of issues for Milestone 3. Note that these should include the updated issues you worked on for this sprint and not be a duplicate of Milestone 2 Project board.] <img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
-
+- [Add screenshot of your Project Board with the issues that you've been working on for this unit's milestone] <img src="https://i.postimg.cc/sDm6R7wd/image.png" width=600>
+- [Add screenshot of your Project Board with the issues that you're working on in the **NEXT sprint**. It should include issues for next unit with assigned owners.] <img src="https://i.postimg.cc/SQftbK69/image.png" width=600>
 ## Completed user stories
 
 - List the completed user stories from this unit
+
+Completed User Stories
+- Register, Login, Sign Out with Firebase Connection
+- Store pantry items in database, create, delete.
+- Generate Recipes page based on pantry items
+- Color coded pantry based on expiry
+
+
 - List any pending user stories / any user stories you decided to cut
 from the original requirements
 
+Pending User Stories 
+- Notification on expiring pantry items
+- Camera integration to quickly enter pantry info 
+
 [Add video/gif of your current application that shows build progress]
-<img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
+ ![Gif](https://submissions.us-east-1.linodeobjects.com/and102/LvxHGXRq.gif)
 
 ## App Demo Video
 
