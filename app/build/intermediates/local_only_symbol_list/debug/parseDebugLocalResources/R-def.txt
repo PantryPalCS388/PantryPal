@@ -1,9 +1,15 @@
 R_DEF: Internal format may change without notice
 local
-color black
+color cream
+color forest_text
+color gray
+color light_green
+color mint_green
+color pantry_green
 color white
 drawable ic_launcher_background
 drawable ic_launcher_foreground
+drawable pantrypal_logo
 id action_add_grocery
 id action_pantry
 id action_profile
@@ -12,6 +18,7 @@ id bottom_navigation
 id btnAddGrocery
 id btnBackToLogin
 id btnDeleteItem
+id btnFindRecipes
 id btnLogin
 id btnSignOut
 id btnSignUp
@@ -23,7 +30,9 @@ id etPassword
 id etQuantity
 id etReenterPassword
 id etSearch
+id forgotPassword
 id fragment_container
+id logoImage
 id recyclerViewPantry
 id rvRecipes
 id spUnit
@@ -38,6 +47,7 @@ id tvInstructions
 id tvRecipeDetailTitle
 id tvRecipeTitle
 id tvSignUp
+id tvUserEmail
 layout activity_login
 layout activity_main
 layout activity_signup
@@ -60,6 +70,7 @@ string google_crash_reporting_api_key
 string google_storage_bucket
 string project_id
 style Base.Theme.PantryPal
+style PantryButton
 style Theme.PantryPal
 xml backup_rules
 xml data_extraction_rules

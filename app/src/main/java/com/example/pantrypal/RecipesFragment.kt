@@ -3,6 +3,7 @@ package com.example.pantrypal
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -10,13 +11,13 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import org.json.JSONArray
 import org.json.JSONObject
 
 class RecipesFragment : Fragment() {
 
     private lateinit var recipeAdapter: RecipeAdapter
     private lateinit var searchInput: EditText
+    private lateinit var recyclerView: RecyclerView
     private val displayedRecipes = mutableListOf<Recipe>()
 
     override fun onCreateView(
@@ -25,8 +26,9 @@ class RecipesFragment : Fragment() {
     ): View? {
         val view = inflater.inflate(R.layout.fragment_recipes, container, false)
 
+        val btnFind = view.findViewById<Button>(R.id.btnFindRecipes)
         searchInput = view.findViewById(R.id.etSearch)
-        val recyclerView = view.findViewById<RecyclerView>(R.id.rvRecipes)
+        recyclerView = view.findViewById(R.id.rvRecipes)
 
         recipeAdapter = RecipeAdapter(displayedRecipes) { recipe ->
             val detailFragment = RecipeDetailFragment.newInstance(recipe)
@@ -36,10 +38,14 @@ class RecipesFragment : Fragment() {
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         recyclerView.adapter = recipeAdapter
 
+        // Filter logic for search bar
         searchInput.addTextChangedListener(object : android.text.TextWatcher {
             override fun afterTextChanged(s: android.text.Editable?) {
                 val query = s.toString().lowercase()
-                val filtered = displayedRecipes.filter { it.title.lowercase().contains(query) }
+                val filtered = displayedRecipes.filter {
+                    it.title.lowercase().contains(query)
+                }
+
                 recipeAdapter = RecipeAdapter(filtered) { recipe ->
                     val detailFragment = RecipeDetailFragment.newInstance(recipe)
                     detailFragment.show(parentFragmentManager, "recipeDetail")
@@ -51,12 +57,16 @@ class RecipesFragment : Fragment() {
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
         })
 
-        getPantryItemsAndFetchRecipes()
+        // Button click triggers AI recipe generation
+        btnFind.setOnClickListener {
+            getPantryItemsAndFetchRecipes()
+        }
 
         return view
     }
 
     private fun getPantryItemsAndFetchRecipes() {
+        Log.d("ButtonClick", "Find Recipes clicked")
         val userId = FirebaseAuth.getInstance().currentUser?.uid
         if (userId != null) {
             FirebaseFirestore.getInstance()
@@ -66,28 +76,28 @@ class RecipesFragment : Fragment() {
                 .get()
                 .addOnSuccessListener { snapshot ->
                     val ingredients = snapshot.documents.mapNotNull { it.getString("name") }
+
                     val prompt = """
-    Based on these ingredients: ${ingredients.joinToString(", ")}, suggest 3 creative recipes.
+                        Based on these ingredients: ${ingredients.joinToString(", ")}, suggest 3 creative recipes.
 
-    Format your response in the following JSON structure exactly:
+                        Format your response in the following JSON structure exactly:
 
-    {
-      "names": ["Recipe 1", "Recipe 2", "Recipe 3"],
-      "ingredients": [
-        ["ingredient 1", "ingredient 2"],
-        ["ingredient 1", "ingredient 2"],
-        ["ingredient 1", "ingredient 2"]
-      ],
-      "instructions": [
-        ["Step 1", "Step 2"],
-        ["Step 1", "Step 2"],
-        ["Step 1", "Step 2"]
-      ]
-    }
+                        {
+                          "names": ["Recipe 1", "Recipe 2", "Recipe 3"],
+                          "ingredients": [
+                            ["ingredient 1", "ingredient 2"],
+                            ["ingredient 1", "ingredient 2"],
+                            ["ingredient 1", "ingredient 2"]
+                          ],
+                          "instructions": [
+                            ["Step 1", "Step 2"],
+                            ["Step 1", "Step 2"],
+                            ["Step 1", "Step 2"]
+                          ]
+                        }
 
-    Do not include anything else outside of this JSON structure.
-""".trimIndent()
-
+                        Do not include anything else outside of this JSON structure.
+                    """.trimIndent()
 
                     activity?.let { act ->
                         GeminiHelper.sendPrompt(act, prompt) { resultJson ->
@@ -137,5 +147,4 @@ class RecipesFragment : Fragment() {
 
         return recipes
     }
-
 }

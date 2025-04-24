@@ -1380,7 +1380,6 @@ color background_floating_material_dark
 color background_floating_material_light
 color background_material_dark
 color background_material_light
-color black
 color bright_foreground_disabled_material_dark
 color bright_foreground_disabled_material_light
 color bright_foreground_inverse_material_dark
@@ -1410,6 +1409,7 @@ color common_google_signin_btn_text_light_disabled
 color common_google_signin_btn_text_light_focused
 color common_google_signin_btn_text_light_pressed
 color common_google_signin_btn_tint
+color cream
 color design_bottom_navigation_shadow_color
 color design_box_stroke_color
 color design_dark_default_color_background
@@ -1456,8 +1456,11 @@ color error_color_material_dark
 color error_color_material_light
 color foreground_material_dark
 color foreground_material_light
+color forest_text
+color gray
 color highlighted_text_material_dark
 color highlighted_text_material_light
+color light_green
 color m3_appbar_overlay_color
 color m3_assist_chip_icon_tint_color
 color m3_assist_chip_stroke_color
@@ -2057,6 +2060,7 @@ color material_timepicker_button_stroke
 color material_timepicker_clock_text_color
 color material_timepicker_clockface
 color material_timepicker_modebutton_tint
+color mint_green
 color mtrl_btn_bg_color_selector
 color mtrl_btn_ripple_color
 color mtrl_btn_stroke_color_selector
@@ -2114,6 +2118,7 @@ color mtrl_textinput_focused_box_stroke_color
 color mtrl_textinput_hovered_box_stroke_color
 color notification_action_color_filter
 color notification_icon_bg_color
+color pantry_green
 color primary_dark_material_dark
 color primary_dark_material_light
 color primary_material_dark
@@ -3153,6 +3158,7 @@ drawable notification_template_icon_bg
 drawable notification_template_icon_low_bg
 drawable notification_tile_bg
 drawable notify_panel_notification_icon_bg
+drawable pantrypal_logo
 drawable test_level_drawable
 drawable tooltip_frame_dark
 drawable tooltip_frame_light
@@ -3272,6 +3278,7 @@ id browser_actions_menu_view
 id btnAddGrocery
 id btnBackToLogin
 id btnDeleteItem
+id btnFindRecipes
 id btnLogin
 id btnSignOut
 id btnSignUp
@@ -3383,6 +3390,7 @@ id fixed
 id flip
 id floating
 id forever
+id forgotPassword
 id fragment_container
 id fragment_container_view_tag
 id frost
@@ -3431,6 +3439,7 @@ id line3
 id linear
 id listMode
 id list_item
+id logoImage
 id m3_side_sheet
 id marquee
 id masked
@@ -3681,6 +3690,7 @@ id tvInstructions
 id tvRecipeDetailTitle
 id tvRecipeTitle
 id tvSignUp
+id tvUserEmail
 id unchecked
 id uniform
 id unlabeled
@@ -4426,6 +4436,7 @@ style MaterialAlertDialog_MaterialComponents_Title_Panel
 style MaterialAlertDialog_MaterialComponents_Title_Panel_CenterStacked
 style MaterialAlertDialog_MaterialComponents_Title_Text
 style MaterialAlertDialog_MaterialComponents_Title_Text_CenterStacked
+style PantryButton
 style Platform_AppCompat
 style Platform_AppCompat_Light
 style Platform_MaterialComponents

@@ -4,7 +4,7 @@
             "outputFile": "com.example.pantrypal.app-mergeDebugResources-41:/values-v24/values-v24.xml",
             "map": [
                 {
-                    "source": "/Users/haithamawad/.gradle/caches/8.9/transforms/b2d8f8effdba7e711f2c9e90465e9105/transformed/material-1.12.0/res/values-v24/values-v24.xml",
+                    "source": "C:\\Users\\sfwnn\\.gradle\\caches\\8.9\\transforms\\b2d8f8effdba7e711f2c9e90465e9105\\transformed\\material-1.12.0\\res\\values-v24\\values-v24.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,9,12,15",
                         "startColumns": "4,4,4,4,4,4,4,4",
@@ -23,7 +23,7 @@
                     }
                 },
                 {
-                    "source": "/Users/haithamawad/.gradle/caches/8.9/transforms/2234eb929b8377fd211450cb10ba4fba/transformed/appcompat-1.7.0/res/values-v24/values-v24.xml",
+                    "source": "C:\\Users\\sfwnn\\.gradle\\caches\\8.9\\transforms\\2234eb929b8377fd211450cb10ba4fba\\transformed\\appcompat-1.7.0\\res\\values-v24\\values-v24.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",
