@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.pantrypal.app-mergeDebugResources-41:/values-en-rGB/values-en-rGB.xml",
+            "outputFile": "com.example.pantrypal.app-mergeDebugResources-45:/values-en-rGB/values-en-rGB.xml",
             "map": [
                 {
                     "source": "C:\\Users\\sfwnn\\.gradle\\caches\\8.9\\transforms\\4a27afdb5e06a99c20001b3ff9610061\\transformed\\play-services-base-18.5.0\\res\\values-en-rGB\\values.xml",

@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.pantrypal.app-mergeDebugResources-41:/values-hy/values-hy.xml",
+            "outputFile": "com.example.pantrypal.app-mergeDebugResources-45:/values-hy/values-hy.xml",
             "map": [
                 {
                     "source": "C:\\Users\\sfwnn\\.gradle\\caches\\8.9\\transforms\\2234eb929b8377fd211450cb10ba4fba\\transformed\\appcompat-1.7.0\\res\\values-hy\\values-hy.xml",

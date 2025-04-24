@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.pantrypal.app-mergeDebugResources-41:/values-uk/values-uk.xml",
+            "outputFile": "com.example.pantrypal.app-mergeDebugResources-45:/values-uk/values-uk.xml",
             "map": [
                 {
                     "source": "C:\\Users\\sfwnn\\.gradle\\caches\\8.9\\transforms\\5466246b38634407598d7f02bdc4f759\\transformed\\play-services-basement-18.5.0\\res\\values-uk\\values.xml",

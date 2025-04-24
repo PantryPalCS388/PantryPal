@@ -22,6 +22,7 @@ id btnFindRecipes
 id btnLogin
 id btnSignOut
 id btnSignUp
+id btnTakePhoto
 id cardView
 id etEmail
 id etExpirationDate

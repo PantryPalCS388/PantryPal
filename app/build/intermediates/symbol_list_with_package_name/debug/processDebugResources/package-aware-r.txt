@@ -3282,6 +3282,7 @@ id btnFindRecipes
 id btnLogin
 id btnSignOut
 id btnSignUp
+id btnTakePhoto
 id buttonPanel
 id cache_measures
 id callMeasure

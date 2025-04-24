@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.pantrypal.app-mergeDebugResources-41:/values-en-rIN/values-en-rIN.xml",
+            "outputFile": "com.example.pantrypal.app-mergeDebugResources-45:/values-en-rIN/values-en-rIN.xml",
             "map": [
                 {
                     "source": "C:\\Users\\sfwnn\\.gradle\\caches\\8.9\\transforms\\bdb044ba58ce7b01afb432bc4a2db665\\transformed\\browser-1.4.0\\res\\values-en-rIN\\values-en-rIN.xml",
