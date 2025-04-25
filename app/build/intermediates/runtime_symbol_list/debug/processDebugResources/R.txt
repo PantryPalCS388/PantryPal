@@ -3373,6 +3373,7 @@ int id etPassword 0x7f0800d0
 int id etQuantity 0x7f0800d1
 int id etReenterPassword 0x7f0800d2
 int id etSearch 0x7f0800d3
+int id etSearchPantry 0x7f08022c
 int id exitUntilCollapsed 0x7f0800d4
 int id expand_activities_button 0x7f0800d5
 int id expanded_menu 0x7f0800d6

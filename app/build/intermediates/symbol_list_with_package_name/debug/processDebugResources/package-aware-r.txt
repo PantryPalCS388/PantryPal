@@ -3374,6 +3374,7 @@ id etPassword
 id etQuantity
 id etReenterPassword
 id etSearch
+id etSearchPantry
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu

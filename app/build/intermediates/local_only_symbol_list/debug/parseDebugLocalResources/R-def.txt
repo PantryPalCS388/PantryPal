@@ -31,6 +31,7 @@ id etPassword
 id etQuantity
 id etReenterPassword
 id etSearch
+id etSearchPantry
 id forgotPassword
 id fragment_container
 id logoImage

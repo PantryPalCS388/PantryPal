@@ -35,6 +35,18 @@
             android:clipToPadding="false"
             android:layout_gravity="center">
 
+            <EditText
+                android:id="@+id/etSearchPantry"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Search pantry"
+                android:drawableLeft="@android:drawable/ic_menu_search"
+                android:drawablePadding="8dp"
+                android:padding="12dp"
+                android:background="@android:drawable/editbox_background_normal"
+                android:layout_marginBottom="16dp" />
+
+
             <!-- Sorting Dropdown -->
             <Spinner
                 android:id="@+id/spinnerSort"
