@@ -1,6 +1,0 @@
-com.example.pantrypal.test.app-core-1.6.1-0 C:\Users\jerem\.gradle\caches\8.9\transforms\67e0f9a9248fbc5863d76370252c7325\transformed\core-1.6.1\res
-com.example.pantrypal.test.app-tracing-1.2.0-1 C:\Users\jerem\.gradle\caches\8.9\transforms\729e9ee6607d7873f9ccff9225bbbdb4\transformed\tracing-1.2.0\res
-com.example.pantrypal.test.app-androidTest-2 C:\college\cs388forks\PantryPal\app\build\generated\res\resValues\androidTest\debug
-com.example.pantrypal.test.app-mergeDebugAndroidTestResources-3 C:\college\cs388forks\PantryPal\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\merged.dir
-com.example.pantrypal.test.app-mergeDebugAndroidTestResources-4 C:\college\cs388forks\PantryPal\app\build\intermediates\incremental\debugAndroidTest\mergeDebugAndroidTestResources\stripped.dir
-com.example.pantrypal.test.app-merged_res-5 C:\college\cs388forks\PantryPal\app\build\intermediates\merged_res\debugAndroidTest

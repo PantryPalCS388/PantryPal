@@ -5,9 +5,7 @@ import android.app.DatePickerDialog
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.*
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -15,9 +13,18 @@ import androidx.fragment.app.Fragment
 import androidx.activity.result.contract.ActivityResultContracts
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.mlkit.vision.common.InputImage
-import com.google.mlkit.vision.label.ImageLabeling
-import com.google.mlkit.vision.label.defaults.ImageLabelerOptions
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.RequestBody
+import okhttp3.RequestBody.Companion.toRequestBody
+import org.json.JSONArray
+import org.json.JSONObject
+import java.io.ByteArrayOutputStream
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -122,22 +129,89 @@ class AddGroceryFragment : Fragment(R.layout.fragment_add_grocery) {
     }
 
     private fun recognizeItemFromImage(bitmap: Bitmap) {
-        val image = InputImage.fromBitmap(bitmap, 0)
-        val labeler = ImageLabeling.getClient(ImageLabelerOptions.DEFAULT_OPTIONS)
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                // 1. Convert Bitmap to base64
+                val outputStream = ByteArrayOutputStream()
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream)
+                val imageBytes = outputStream.toByteArray()
+                val base64Image = android.util.Base64.encodeToString(imageBytes, android.util.Base64.NO_WRAP)
 
-        labeler.process(image)
-            .addOnSuccessListener { labels ->
-                val topLabel = labels.maxByOrNull { it.confidence }
-                if (topLabel != null) {
-                    val detectedItem = topLabel.text.lowercase()
-                    Toast.makeText(requireContext(), "Detected: $detectedItem", Toast.LENGTH_SHORT).show()
-                    nameEditText.setText(detectedItem)
+                // 2. Build the correct JSON body manually
+                val promptText = "Identify the grocery item in the image and, if possible, its expiration date. Return the response strictly in JSON format: {\"name\": \"Item\", \"expiration\": \"YYYY-MM-DD\" or \"Unknown\"}."
+
+                val partsArray = JSONArray()
+                partsArray.put(JSONObject().put("text", promptText))
+                partsArray.put(JSONObject().put("inline_data", JSONObject()
+                    .put("mime_type", "image/jpeg")
+                    .put("data", base64Image)
+                ))
+
+                val userContent = JSONObject()
+                    .put("role", "user")
+                    .put("parts", partsArray)
+
+                val contentsArray = JSONArray()
+                contentsArray.put(userContent)
+
+                val requestBodyJson = JSONObject()
+                    .put("contents", contentsArray)
+
+                val body = requestBodyJson.toString().toRequestBody("application/json".toMediaType())
+
+                // 3. Send HTTP request
+                val request = Request.Builder()
+                    .url("https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-001:generateContent?key=YOUR_API_KEY_HERE")
+                    .post(body)
+                    .build()
+
+                val client = OkHttpClient()
+                val response = client.newCall(request).execute()
+
+                val responseString = response.body?.string()
+
+                if (response.isSuccessful && responseString != null) {
+                    val jsonResponse = JSONObject(responseString)
+                    val textResponse = jsonResponse
+                        .getJSONArray("candidates")
+                        .getJSONObject(0)
+                        .getJSONObject("content")
+                        .getJSONArray("parts")
+                        .getJSONObject(0)
+                        .getString("text")
+
+                    try {
+                        val parsedJson = JSONObject(textResponse.trim())
+                        val detectedName = parsedJson.getString("name")
+                        val detectedExpiration = parsedJson.getString("expiration")
+
+                        withContext(Dispatchers.Main) {
+                            nameEditText.setText(detectedName)
+                            expirationDateEditText.setText(
+                                if (detectedExpiration != "Unknown") detectedExpiration else ""
+                            )
+                            Toast.makeText(requireContext(), "Detected: $detectedName", Toast.LENGTH_SHORT).show()
+                        }
+                    } catch (e: Exception) {
+                        withContext(Dispatchers.Main) {
+                            Toast.makeText(requireContext(), "Failed to parse Gemini JSON response.", Toast.LENGTH_SHORT).show()
+                        }
+                    }
                 } else {
-                    Toast.makeText(requireContext(), "Couldn't detect item", Toast.LENGTH_SHORT).show()
+                    // Even on error, try to log the body
+                    android.util.Log.e("GeminiError", "HTTP ${response.code}: $responseString")
+
+                    withContext(Dispatchers.Main) {
+                        Toast.makeText(requireContext(), "Gemini API error: ${response.code}", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            } catch (e: Exception) {
+                withContext(Dispatchers.Main) {
+                    Toast.makeText(requireContext(), "Recognition failed: ${e.message}", Toast.LENGTH_SHORT).show()
                 }
             }
-            .addOnFailureListener {
-                Toast.makeText(requireContext(), "Error recognizing image", Toast.LENGTH_SHORT).show()
-            }
+        }
     }
+
+
 }
