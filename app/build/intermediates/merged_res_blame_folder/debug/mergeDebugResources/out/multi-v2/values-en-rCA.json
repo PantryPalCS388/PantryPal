@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "com.example.pantrypal.app-mergeDebugResources-41:/values-en-rCA/values-en-rCA.xml",
+            "outputFile": "com.example.pantrypal.app-mergeDebugResources-45:/values-en-rCA/values-en-rCA.xml",
             "map": [
                 {
-                    "source": "/Users/haithamawad/.gradle/caches/8.9/transforms/bdb044ba58ce7b01afb432bc4a2db665/transformed/browser-1.4.0/res/values-en-rCA/values-en-rCA.xml",
+                    "source": "C:\\Users\\sfwnn\\.gradle\\caches\\8.9\\transforms\\bdb044ba58ce7b01afb432bc4a2db665\\transformed\\browser-1.4.0\\res\\values-en-rCA\\values-en-rCA.xml",
                     "from": {
                         "startLines": "2,3,4,5",
                         "startColumns": "4,4,4,4",
@@ -21,7 +21,7 @@
                     }
                 },
                 {
-                    "source": "/Users/haithamawad/.gradle/caches/8.9/transforms/021c6fc92e29331aab3887b064216cc8/transformed/credentials-1.2.0-rc01/res/values-en-rCA/values-en-rCA.xml",
+                    "source": "C:\\Users\\sfwnn\\.gradle\\caches\\8.9\\transforms\\021c6fc92e29331aab3887b064216cc8\\transformed\\credentials-1.2.0-rc01\\res\\values-en-rCA\\values-en-rCA.xml",
                     "from": {
                         "startLines": "2,3",
                         "startColumns": "4,4",
@@ -38,7 +38,7 @@
                     }
                 },
                 {
-                    "source": "/Users/haithamawad/.gradle/caches/8.9/transforms/2234eb929b8377fd211450cb10ba4fba/transformed/appcompat-1.7.0/res/values-en-rCA/values-en-rCA.xml",
+                    "source": "C:\\Users\\sfwnn\\.gradle\\caches\\8.9\\transforms\\2234eb929b8377fd211450cb10ba4fba\\transformed\\appcompat-1.7.0\\res\\values-en-rCA\\values-en-rCA.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29",
                         "startColumns": "4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4,4",
@@ -55,7 +55,7 @@
                     }
                 },
                 {
-                    "source": "/Users/haithamawad/.gradle/caches/8.9/transforms/e8ff701db56797bec0763028996ae00e/transformed/core-1.15.0/res/values-en-rCA/values-en-rCA.xml",
+                    "source": "C:\\Users\\sfwnn\\.gradle\\caches\\8.9\\transforms\\e8ff701db56797bec0763028996ae00e\\transformed\\core-1.15.0\\res\\values-en-rCA\\values-en-rCA.xml",
                     "from": {
                         "startLines": "2,3,4,5,6,7,8,9",
                         "startColumns": "4,4,4,4,4,4,4,4",

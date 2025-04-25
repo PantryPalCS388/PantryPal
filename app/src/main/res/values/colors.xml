@@ -1,5 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="pantry_green">#355E3B</color>       <!-- Main green -->
+    <color name="mint_green">#A8D5BA</color>        <!-- Accent -->
+    <color name="cream">#F8F4E3</color>              <!-- Background -->
+    <color name="forest_text">#2E3D32</color>        <!-- Text -->
+    <color name="white">#FFFFFF</color>              <!-- Used on buttons -->
+    <color name="light_green">#A8D5BA</color>
+    <color name="gray">#888888</color>
 </resources>
+
