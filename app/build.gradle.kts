@@ -44,18 +44,21 @@ dependencies {
     implementation("com.google.android.material:material:1.12.0")
     implementation("androidx.constraintlayout:constraintlayout:2.2.1")
 
-    // Firebase Authentication and Firestore dependencies
+    // Firebase
     implementation(platform("com.google.firebase:firebase-bom:33.12.0"))
     implementation("com.google.firebase:firebase-auth")
     implementation("com.google.firebase:firebase-firestore")
     implementation("com.google.firebase:firebase-analytics")
 
-    //gemini
+    // Gemini (optional if you use Gemini SDK elsewhere)
     implementation("com.google.ai.client.generativeai:generativeai:0.7.0")
 
-    implementation ("com.google.mlkit:image-labeling:17.0.7")
-    implementation ("androidx.activity:activity-ktx:1.8.0")
+    // ML Kit
+    implementation("com.google.mlkit:image-labeling:17.0.7")
+    implementation("androidx.activity:activity-ktx:1.8.0")
 
+    // OkHttp for REST calls
+    implementation("com.squareup.okhttp3:okhttp:4.11.0")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.2.1")

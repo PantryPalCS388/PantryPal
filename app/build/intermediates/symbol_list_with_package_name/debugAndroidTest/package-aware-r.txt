@@ -1,3 +1,0 @@
-com.example.pantrypal.test
-style WhiteBackgroundDialogTheme
-style WhiteBackgroundTheme

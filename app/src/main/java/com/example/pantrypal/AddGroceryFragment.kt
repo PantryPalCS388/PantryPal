@@ -5,9 +5,7 @@ import android.app.DatePickerDialog
 import android.content.pm.PackageManager
 import android.graphics.Bitmap
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
 import android.widget.*
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -15,9 +13,18 @@ import androidx.fragment.app.Fragment
 import androidx.activity.result.contract.ActivityResultContracts
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
-import com.google.mlkit.vision.common.InputImage
-import com.google.mlkit.vision.label.ImageLabeling
-import com.google.mlkit.vision.label.defaults.ImageLabelerOptions
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
+import okhttp3.MediaType.Companion.toMediaType
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.RequestBody
+import okhttp3.RequestBody.Companion.toRequestBody
+import org.json.JSONArray
+import org.json.JSONObject
+import java.io.ByteArrayOutputStream
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -121,23 +128,117 @@ class AddGroceryFragment : Fragment(R.layout.fragment_add_grocery) {
         }
     }
 
-    private fun recognizeItemFromImage(bitmap: Bitmap) {
-        val image = InputImage.fromBitmap(bitmap, 0)
-        val labeler = ImageLabeling.getClient(ImageLabelerOptions.DEFAULT_OPTIONS)
 
-        labeler.process(image)
-            .addOnSuccessListener { labels ->
-                val topLabel = labels.maxByOrNull { it.confidence }
-                if (topLabel != null) {
-                    val detectedItem = topLabel.text.lowercase()
-                    Toast.makeText(requireContext(), "Detected: $detectedItem", Toast.LENGTH_SHORT).show()
-                    nameEditText.setText(detectedItem)
+    private fun recognizeItemFromImage(bitmap: Bitmap) {
+        CoroutineScope(Dispatchers.IO).launch {
+            try {
+                // 1. Convert Bitmap to Base64
+                val outputStream = ByteArrayOutputStream()
+                bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream)
+                val imageBytes = outputStream.toByteArray()
+                val base64Image = android.util.Base64.encodeToString(imageBytes, android.util.Base64.NO_WRAP)
+
+                // 2. Prompt Gemini for name, expiration, quantity, unit
+                val promptText = """
+                    You are an image-to-JSON extraction model.
+                    
+                    Task: Identify the grocery item in the image and return a JSON object with the following keys:
+                    {
+                      "name": "Name of the item (including brand if visible)",
+                      "expiration": "YYYY-MM-DD" or "Unknown",
+                      "quantity": Estimated float (max 2 decimal places). If the exact quantity is not visible, infer it using common product sizes based on the brand and item type.,
+                      "unit": One of ["kg", "lbs", "ounces", "grams", "liters", "fluid oz"]
+                    }
+                    
+                    Rules:
+                    - Use real-world product knowledge to estimate quantity (e.g., typical size of branded snack bags, jars, etc.)
+                    - Output raw JSON only — no code block formatting (e.g., no ```json).
+                    - Do not include any explanations, notes, or formatting outside the JSON.
+                    - All fields must be present and valid.
+                    """.trimIndent()
+
+
+
+                val partsArray = JSONArray().apply {
+                    put(JSONObject().put("text", promptText))
+                    put(JSONObject().put("inline_data", JSONObject()
+                        .put("mime_type", "image/jpeg")
+                        .put("data", base64Image)
+                    ))
+                }
+
+                val userContent = JSONObject().put("role", "user").put("parts", partsArray)
+                val contentsArray = JSONArray().put(userContent)
+                val requestBodyJson = JSONObject().put("contents", contentsArray)
+
+                val body = requestBodyJson.toString().toRequestBody("application/json".toMediaType())
+
+                // 3. Send HTTP request to Gemini 1.5 Pro
+                val request = Request.Builder()
+                    .url("https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-001:generateContent?key=API-KEY")
+                    .post(body)
+                    .build()
+
+                val client = OkHttpClient()
+                val response = client.newCall(request).execute()
+                val responseString = response.body?.string()
+                android.util.Log.d("GeminiRawResponse", "Response body:\n$responseString")
+
+                if (response.isSuccessful && responseString != null) {
+                    val jsonResponse = JSONObject(responseString)
+                    val textResponse = jsonResponse
+                        .getJSONArray("candidates")
+                        .getJSONObject(0)
+                        .getJSONObject("content")
+                        .getJSONArray("parts")
+                        .getJSONObject(0)
+                        .getString("text")
+
+                    try {
+                        val parsedJson = JSONObject(textResponse.trim())
+                        val detectedName = parsedJson.getString("name")
+                        val detectedExpiration = parsedJson.getString("expiration")
+                        val detectedQuantity = parsedJson.optDouble("quantity", 1.0)
+                        val detectedUnit = parsedJson.optString("unit", "grams")
+
+                        withContext(Dispatchers.Main) {
+                            nameEditText.setText(detectedName)
+                            quantityEditText.setText(String.format("%.2f", detectedQuantity))
+                            expirationDateEditText.setText(
+                                if (detectedExpiration != "Unknown") detectedExpiration else ""
+                            )
+
+                            // Select the unit in the spinner
+                            val unitIndex = (0 until unitSpinner.count).firstOrNull {
+                                unitSpinner.getItemAtPosition(it).toString().equals(detectedUnit, ignoreCase = true)
+                            } ?: 0
+                            unitSpinner.setSelection(unitIndex)
+
+                            Toast.makeText(
+                                requireContext(),
+                                "Detected: $detectedName ($detectedQuantity $detectedUnit)",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                        }
+                    } catch (e: Exception) {
+                        withContext(Dispatchers.Main) {
+                            Toast.makeText(requireContext(), "Failed to parse Gemini JSON response.", Toast.LENGTH_SHORT).show()
+                        }
+                    }
                 } else {
-                    Toast.makeText(requireContext(), "Couldn't detect item", Toast.LENGTH_SHORT).show()
+                    android.util.Log.e("GeminiError", "HTTP ${response.code}: $responseString")
+                    withContext(Dispatchers.Main) {
+                        Toast.makeText(requireContext(), "Gemini API error: ${response.code}", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            } catch (e: Exception) {
+                withContext(Dispatchers.Main) {
+                    Toast.makeText(requireContext(), "Recognition failed: ${e.message}", Toast.LENGTH_SHORT).show()
                 }
             }
-            .addOnFailureListener {
-                Toast.makeText(requireContext(), "Error recognizing image", Toast.LENGTH_SHORT).show()
-            }
+        }
     }
+
+
+
 }
