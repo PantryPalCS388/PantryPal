@@ -128,47 +128,61 @@ class AddGroceryFragment : Fragment(R.layout.fragment_add_grocery) {
         }
     }
 
+
     private fun recognizeItemFromImage(bitmap: Bitmap) {
         CoroutineScope(Dispatchers.IO).launch {
             try {
-                // 1. Convert Bitmap to base64
+                // 1. Convert Bitmap to Base64
                 val outputStream = ByteArrayOutputStream()
                 bitmap.compress(Bitmap.CompressFormat.JPEG, 100, outputStream)
                 val imageBytes = outputStream.toByteArray()
                 val base64Image = android.util.Base64.encodeToString(imageBytes, android.util.Base64.NO_WRAP)
 
-                // 2. Build the correct JSON body manually
-                val promptText = "Identify the grocery item in the image and, if possible, its expiration date. Return the response strictly in JSON format: {\"name\": \"Item\", \"expiration\": \"YYYY-MM-DD\" or \"Unknown\"}."
+                // 2. Prompt Gemini for name, expiration, quantity, unit
+                val promptText = """
+                    You are an image-to-JSON extraction model.
+                    
+                    Task: Identify the grocery item in the image and return a JSON object with the following keys:
+                    {
+                      "name": "Name of the item (including brand if visible)",
+                      "expiration": "YYYY-MM-DD" or "Unknown",
+                      "quantity": Estimated float (max 2 decimal places). If the exact quantity is not visible, infer it using common product sizes based on the brand and item type.,
+                      "unit": One of ["kg", "lbs", "ounces", "grams", "liters", "fluid oz"]
+                    }
+                    
+                    Rules:
+                    - Use real-world product knowledge to estimate quantity (e.g., typical size of branded snack bags, jars, etc.)
+                    - Output raw JSON only — no code block formatting (e.g., no ```json).
+                    - Do not include any explanations, notes, or formatting outside the JSON.
+                    - All fields must be present and valid.
+                    """.trimIndent()
 
-                val partsArray = JSONArray()
-                partsArray.put(JSONObject().put("text", promptText))
-                partsArray.put(JSONObject().put("inline_data", JSONObject()
-                    .put("mime_type", "image/jpeg")
-                    .put("data", base64Image)
-                ))
 
-                val userContent = JSONObject()
-                    .put("role", "user")
-                    .put("parts", partsArray)
 
-                val contentsArray = JSONArray()
-                contentsArray.put(userContent)
+                val partsArray = JSONArray().apply {
+                    put(JSONObject().put("text", promptText))
+                    put(JSONObject().put("inline_data", JSONObject()
+                        .put("mime_type", "image/jpeg")
+                        .put("data", base64Image)
+                    ))
+                }
 
-                val requestBodyJson = JSONObject()
-                    .put("contents", contentsArray)
+                val userContent = JSONObject().put("role", "user").put("parts", partsArray)
+                val contentsArray = JSONArray().put(userContent)
+                val requestBodyJson = JSONObject().put("contents", contentsArray)
 
                 val body = requestBodyJson.toString().toRequestBody("application/json".toMediaType())
 
-                // 3. Send HTTP request
+                // 3. Send HTTP request to Gemini 1.5 Pro
                 val request = Request.Builder()
-                    .url("https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-001:generateContent?key=YOUR_API_KEY_HERE")
+                    .url("https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-pro-001:generateContent?key=API-KEY")
                     .post(body)
                     .build()
 
                 val client = OkHttpClient()
                 val response = client.newCall(request).execute()
-
                 val responseString = response.body?.string()
+                android.util.Log.d("GeminiRawResponse", "Response body:\n$responseString")
 
                 if (response.isSuccessful && responseString != null) {
                     val jsonResponse = JSONObject(responseString)
@@ -184,13 +198,27 @@ class AddGroceryFragment : Fragment(R.layout.fragment_add_grocery) {
                         val parsedJson = JSONObject(textResponse.trim())
                         val detectedName = parsedJson.getString("name")
                         val detectedExpiration = parsedJson.getString("expiration")
+                        val detectedQuantity = parsedJson.optDouble("quantity", 1.0)
+                        val detectedUnit = parsedJson.optString("unit", "grams")
 
                         withContext(Dispatchers.Main) {
                             nameEditText.setText(detectedName)
+                            quantityEditText.setText(String.format("%.2f", detectedQuantity))
                             expirationDateEditText.setText(
                                 if (detectedExpiration != "Unknown") detectedExpiration else ""
                             )
-                            Toast.makeText(requireContext(), "Detected: $detectedName", Toast.LENGTH_SHORT).show()
+
+                            // Select the unit in the spinner
+                            val unitIndex = (0 until unitSpinner.count).firstOrNull {
+                                unitSpinner.getItemAtPosition(it).toString().equals(detectedUnit, ignoreCase = true)
+                            } ?: 0
+                            unitSpinner.setSelection(unitIndex)
+
+                            Toast.makeText(
+                                requireContext(),
+                                "Detected: $detectedName ($detectedQuantity $detectedUnit)",
+                                Toast.LENGTH_SHORT
+                            ).show()
                         }
                     } catch (e: Exception) {
                         withContext(Dispatchers.Main) {
@@ -198,9 +226,7 @@ class AddGroceryFragment : Fragment(R.layout.fragment_add_grocery) {
                         }
                     }
                 } else {
-                    // Even on error, try to log the body
                     android.util.Log.e("GeminiError", "HTTP ${response.code}: $responseString")
-
                     withContext(Dispatchers.Main) {
                         Toast.makeText(requireContext(), "Gemini API error: ${response.code}", Toast.LENGTH_SHORT).show()
                     }
@@ -212,6 +238,7 @@ class AddGroceryFragment : Fragment(R.layout.fragment_add_grocery) {
             }
         }
     }
+
 
 
 }
