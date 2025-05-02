@@ -85,18 +85,18 @@ class RecipesFragment : Fragment() {
                         {
                           "names": ["Recipe 1", "Recipe 2", "Recipe 3"],
                           "ingredients": [
-                            ["ingredient 1", "ingredient 2"],
-                            ["ingredient 1", "ingredient 2"],
-                            ["ingredient 1", "ingredient 2"]
+                            ["1 cup ingredient 1", "3 tbsp ingredient 2"],
+                            ["8 ounces ingredient 1", "3 cups ingredient 2"],
+                            ["4 tsp ingredient 1", "1/2 cup ingredient 2"]
                           ],
                           "instructions": [
-                            ["Step 1", "Step 2"],
-                            ["Step 1", "Step 2"],
-                            ["Step 1", "Step 2"]
+                            ["instruction 1", "instruction 2"],
+                            ["instruction 1", "instruction 2"],
+                            ["instruction 1", "instruction 2"]
                           ]
                         }
 
-                        Do not include anything else outside of this JSON structure.
+                        Do not include anything else outside of this JSON structure. Try to split long instructions into multiple.
                     """.trimIndent()
 
                     activity?.let { act ->

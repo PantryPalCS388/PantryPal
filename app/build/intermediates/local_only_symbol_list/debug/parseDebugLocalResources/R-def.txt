@@ -35,6 +35,7 @@ id etSearchPantry
 id forgotPassword
 id fragment_container
 id logoImage
+id profileLogoImage
 id recyclerViewPantry
 id rvRecipes
 id spUnit
