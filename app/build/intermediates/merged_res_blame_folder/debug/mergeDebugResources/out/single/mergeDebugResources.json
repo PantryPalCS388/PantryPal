@@ -20,6 +20,10 @@
         "source": "/Users/haithamawad/.gradle/daemon/8.9/com.example.pantrypal.app-main-49:/menu/bottom_navigation_menu.xml"
     },
     {
+        "merged": "/Users/haithamawad/.gradle/daemon/8.9/com.example.pantrypal.app-debug-47:/layout_dialog_edit_grocery.xml.flat",
+        "source": "/Users/haithamawad/.gradle/daemon/8.9/com.example.pantrypal.app-main-49:/layout/dialog_edit_grocery.xml"
+    },
+    {
         "merged": "/Users/haithamawad/.gradle/daemon/8.9/com.example.pantrypal.app-debug-47:/mipmap-mdpi_ic_launcher.webp.flat",
         "source": "/Users/haithamawad/.gradle/daemon/8.9/com.example.pantrypal.app-main-49:/mipmap-mdpi/ic_launcher.webp"
     },
@@ -30,10 +34,6 @@
     {
         "merged": "/Users/haithamawad/.gradle/daemon/8.9/com.example.pantrypal.app-debug-47:/mipmap-hdpi_ic_launcher_round.webp.flat",
         "source": "/Users/haithamawad/.gradle/daemon/8.9/com.example.pantrypal.app-main-49:/mipmap-hdpi/ic_launcher_round.webp"
-    },
-    {
-        "merged": "com.example.pantrypal.app-debug-47:/layout_fragment_add_grocery.xml.flat",
-        "source": "com.example.pantrypal.app-main-49:/layout/fragment_add_grocery.xml"
     },
     {
         "merged": "/Users/haithamawad/.gradle/daemon/8.9/com.example.pantrypal.app-debug-47:/layout_fragment_item_detail.xml.flat",
@@ -102,6 +102,10 @@
     {
         "merged": "/Users/haithamawad/.gradle/daemon/8.9/com.example.pantrypal.app-debug-47:/layout_item_grocery.xml.flat",
         "source": "/Users/haithamawad/.gradle/daemon/8.9/com.example.pantrypal.app-main-49:/layout/item_grocery.xml"
+    },
+    {
+        "merged": "com.example.pantrypal.app-debug-47:/layout_fragment_item_detail.xml.flat",
+        "source": "com.example.pantrypal.app-main-49:/layout/fragment_item_detail.xml"
     },
     {
         "merged": "/Users/haithamawad/.gradle/daemon/8.9/com.example.pantrypal.app-debug-47:/layout_item_recipe.xml.flat",

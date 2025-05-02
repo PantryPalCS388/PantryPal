@@ -1,5 +1,6 @@
 package com.example.pantrypal
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
@@ -14,6 +15,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
+import java.text.SimpleDateFormat
+import java.util.Calendar
+import java.util.Locale
+import android.app.DatePickerDialog
+
 
 class PantryFragment : Fragment(R.layout.fragment_pantry) {
 
@@ -23,14 +29,14 @@ class PantryFragment : Fragment(R.layout.fragment_pantry) {
     private lateinit var searchInput: EditText
 
     private val groceryList = mutableListOf<GroceryItem>()
-    private val fullGroceryList = mutableListOf<GroceryItem>() // unfiltered full copy
+    private val fullGroceryList = mutableListOf<GroceryItem>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         recyclerView = view.findViewById(R.id.recyclerViewPantry)
         sortSpinner = view.findViewById(R.id.spinnerSort)
-        searchInput = view.findViewById(R.id.etSearchPantry) // 🛠️ bind the EditText
+        searchInput = view.findViewById(R.id.etSearchPantry)
 
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         adapter = GroceryAdapter(groceryList)
@@ -40,6 +46,9 @@ class PantryFragment : Fragment(R.layout.fragment_pantry) {
             val detailFragment = ItemDetailFragment.newInstance(groceryItem)
             detailFragment.setDeleteListener {
                 deleteGroceryItem(groceryItem)
+            }
+            detailFragment.setEditListener {
+                showEditDialog(groceryItem)
             }
             detailFragment.show(childFragmentManager, "ItemDetail")
         }
@@ -58,7 +67,6 @@ class PantryFragment : Fragment(R.layout.fragment_pantry) {
             override fun onNothingSelected(parent: AdapterView<*>?) {}
         }
 
-        // 🔥 Setup search input
         searchInput.addTextChangedListener(object : TextWatcher {
             override fun afterTextChanged(s: Editable?) {
                 val query = s.toString().lowercase()
@@ -76,6 +84,17 @@ class PantryFragment : Fragment(R.layout.fragment_pantry) {
 
         fetchGroceryItems()
     }
+
+    private fun sortAlphabetically() {
+        groceryList.sortBy { it.name }
+        adapter.notifyDataSetChanged()
+    }
+
+    private fun sortByExpirationDate() {
+        groceryList.sortBy { it.expirationDate }
+        adapter.notifyDataSetChanged()
+    }
+
 
     private fun fetchGroceryItems() {
         val userId = FirebaseAuth.getInstance().currentUser?.uid
@@ -107,15 +126,80 @@ class PantryFragment : Fragment(R.layout.fragment_pantry) {
         }
     }
 
-    private fun sortAlphabetically() {
-        groceryList.sortBy { it.name }
-        adapter.notifyDataSetChanged()
+    private fun updateGroceryItem(item: GroceryItem) {
+        val userId = FirebaseAuth.getInstance().currentUser?.uid ?: return
+        val db = FirebaseFirestore.getInstance()
+
+        db.collection("users")
+            .document(userId)
+            .collection("pantry")
+            .document(item.documentId)
+            .set(item)
+            .addOnSuccessListener {
+                Toast.makeText(requireContext(), "Item updated!", Toast.LENGTH_SHORT).show()
+                fetchGroceryItems()
+            }
+            .addOnFailureListener { e ->
+                Toast.makeText(requireContext(), "Update failed: ${e.message}", Toast.LENGTH_SHORT).show()
+            }
     }
 
-    private fun sortByExpirationDate() {
-        groceryList.sortBy { it.expirationDate }
-        adapter.notifyDataSetChanged()
+    private fun showEditDialog(item: GroceryItem) {
+        val dialogView = layoutInflater.inflate(R.layout.dialog_edit_grocery, null)
+        val etName = dialogView.findViewById<EditText>(R.id.etEditName)
+        val etQuantity = dialogView.findViewById<EditText>(R.id.etEditQuantity)
+        val spUnit = dialogView.findViewById<Spinner>(R.id.spEditUnit)
+        val etExpiration = dialogView.findViewById<EditText>(R.id.etEditExpiration)
+
+        val calendar = Calendar.getInstance()
+        val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
+
+        // Spinner setup
+        val units = arrayOf("kg", "lbs", "ounces", "grams", "liters", "fluid oz")
+        val unitAdapter = ArrayAdapter(requireContext(), android.R.layout.simple_spinner_item, units)
+        unitAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+        spUnit.adapter = unitAdapter
+
+        // Pre-fill values
+        etName.setText(item.name)
+        etQuantity.setText(item.quantity.toString())
+        etExpiration.setText(item.expirationDate)
+
+        // Set selected unit in spinner
+        val unitIndex = units.indexOfFirst { it.equals(item.unit, ignoreCase = true) }.takeIf { it >= 0 } ?: 0
+        spUnit.setSelection(unitIndex)
+
+        // Date picker on click
+        etExpiration.setOnClickListener {
+            val parts = item.expirationDate.split("-")
+            val year = parts.getOrNull(0)?.toIntOrNull() ?: calendar.get(Calendar.YEAR)
+            val month = parts.getOrNull(1)?.toIntOrNull()?.minus(1) ?: calendar.get(Calendar.MONTH)
+            val day = parts.getOrNull(2)?.toIntOrNull() ?: calendar.get(Calendar.DAY_OF_MONTH)
+
+            val datePicker = DatePickerDialog(requireContext(), { _, y, m, d ->
+                calendar.set(y, m, d)
+                etExpiration.setText(dateFormat.format(calendar.time))
+            }, year, month, day)
+
+            datePicker.show()
+        }
+
+        AlertDialog.Builder(requireContext())
+            .setTitle("Edit Grocery Item")
+            .setView(dialogView)
+            .setPositiveButton("Save") { _, _ ->
+                val updatedItem = item.copy(
+                    name = etName.text.toString(),
+                    quantity = etQuantity.text.toString().toIntOrNull() ?: 0,
+                    unit = spUnit.selectedItem.toString(),
+                    expirationDate = etExpiration.text.toString()
+                )
+                updateGroceryItem(updatedItem)
+            }
+            .setNegativeButton("Cancel", null)
+            .show()
     }
+
 
     fun addGroceryItem(groceryItem: GroceryItem) {
         groceryList.add(groceryItem)
