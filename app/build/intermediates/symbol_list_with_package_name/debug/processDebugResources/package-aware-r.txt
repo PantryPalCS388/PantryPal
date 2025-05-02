@@ -3278,6 +3278,7 @@ id browser_actions_menu_view
 id btnAddGrocery
 id btnBackToLogin
 id btnDeleteItem
+id btnEdit
 id btnFindRecipes
 id btnLogin
 id btnSignOut
@@ -3367,6 +3368,9 @@ id endToStart
 id enterAlways
 id enterAlwaysCollapsed
 id escape
+id etEditExpiration
+id etEditName
+id etEditQuantity
 id etEmail
 id etExpirationDate
 id etName
@@ -3555,6 +3559,7 @@ id pin
 id position
 id postLayout
 id pressed
+id profileLogoImage
 id progress_circular
 id progress_horizontal
 id radio
@@ -3608,6 +3613,7 @@ id snackbar_text
 id snap
 id snapMargins
 id south
+id spEditUnit
 id spUnit
 id spacer
 id special_effects_controller_view_tag
@@ -3684,7 +3690,6 @@ id transition_transform
 id triangle
 id tvDetailExpirationDate
 id tvDetailName
-id tvDetailQuantity
 id tvExpirationDate
 id tvGroceryName
 id tvIngredients
@@ -3854,6 +3859,7 @@ layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
+layout dialog_edit_grocery
 layout fragment_add_grocery
 layout fragment_item_detail
 layout fragment_pantry

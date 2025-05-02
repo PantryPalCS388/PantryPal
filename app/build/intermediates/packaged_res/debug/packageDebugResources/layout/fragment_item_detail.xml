@@ -3,34 +3,42 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:padding="24dp"
+    android:background="@android:color/white">
 
     <TextView
         android:id="@+id/tvDetailName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Name"
+        android:text="Item: ..."
         android:textSize="18sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/tvDetailQuantity"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Quantity"
-        android:textSize="16sp" />
+        android:textStyle="bold"
+        android:layout_marginBottom="8dp" />
 
     <TextView
         android:id="@+id/tvDetailExpirationDate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Expiration Date"
-        android:textSize="16sp" />
+        android:text="Expires: ..."
+        android:textSize="16sp"
+        android:layout_marginBottom="16dp" />
 
     <Button
         android:id="@+id/btnDeleteItem"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Delete Item"
-        android:textColor="@android:color/white"/>
+        android:textColor="@android:color/white"
+        android:backgroundTint="@color/pantry_green"
+        android:fontFamily="sans-serif-medium"
+        android:layout_marginBottom="12dp" />
+
+    <Button
+        android:id="@+id/btnEdit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Edit Item"
+        android:textColor="@android:color/white"
+        android:backgroundTint="@color/pantry_green"
+        android:fontFamily="sans-serif-medium" />
 </LinearLayout>

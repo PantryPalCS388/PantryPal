@@ -11,7 +11,7 @@ object GeminiHelper {
 
     private val generativeModel = GenerativeModel(
         modelName = "gemini-1.5-pro-001",
-        apiKey = "AIzaSyCUUhunCa2ZPoJP9RQLIF8bcEK9x4L8TNo"
+        apiKey = "put api key here"
     )
 
     fun sendPrompt(activity: ComponentActivity, prompt: String, onResult: (String) -> Unit) {

@@ -1,118 +1,126 @@
 [
     {
-        "merged": "com.example.pantrypal.app-debug-47:/drawable_ic_launcher_foreground.xml.flat",
-        "source": "com.example.pantrypal.app-main-49:/drawable/ic_launcher_foreground.xml"
+        "merged": "/Users/haithamawad/.gradle/daemon/8.9/com.example.pantrypal.app-debug-47:/drawable_ic_launcher_background.xml.flat",
+        "source": "/Users/haithamawad/.gradle/daemon/8.9/com.example.pantrypal.app-main-49:/drawable/ic_launcher_background.xml"
     },
     {
-        "merged": "com.example.pantrypal.app-debug-47:/drawable_pantrypal_logo.png.flat",
-        "source": "com.example.pantrypal.app-main-49:/drawable/pantrypal_logo.png"
+        "merged": "/Users/haithamawad/.gradle/daemon/8.9/com.example.pantrypal.app-debug-47:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
+        "source": "/Users/haithamawad/.gradle/daemon/8.9/com.example.pantrypal.app-main-49:/mipmap-xxxhdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "com.example.pantrypal.app-debug-47:/mipmap-xhdpi_ic_launcher.webp.flat",
-        "source": "com.example.pantrypal.app-main-49:/mipmap-xhdpi/ic_launcher.webp"
+        "merged": "/Users/haithamawad/.gradle/daemon/8.9/com.example.pantrypal.app-debug-47:/mipmap-anydpi-v26_ic_launcher.xml.flat",
+        "source": "/Users/haithamawad/.gradle/daemon/8.9/com.example.pantrypal.app-main-49:/mipmap-anydpi-v26/ic_launcher.xml"
     },
     {
-        "merged": "com.example.pantrypal.app-debug-47:/layout_activity_login.xml.flat",
-        "source": "com.example.pantrypal.app-main-49:/layout/activity_login.xml"
+        "merged": "/Users/haithamawad/.gradle/daemon/8.9/com.example.pantrypal.app-debug-47:/drawable_pantrypal_logo.png.flat",
+        "source": "/Users/haithamawad/.gradle/daemon/8.9/com.example.pantrypal.app-main-49:/drawable/pantrypal_logo.png"
     },
     {
-        "merged": "com.example.pantrypal.app-debug-47:/mipmap-xxxhdpi_ic_launcher.webp.flat",
-        "source": "com.example.pantrypal.app-main-49:/mipmap-xxxhdpi/ic_launcher.webp"
+        "merged": "/Users/haithamawad/.gradle/daemon/8.9/com.example.pantrypal.app-debug-47:/menu_bottom_navigation_menu.xml.flat",
+        "source": "/Users/haithamawad/.gradle/daemon/8.9/com.example.pantrypal.app-main-49:/menu/bottom_navigation_menu.xml"
     },
     {
-        "merged": "com.example.pantrypal.app-debug-47:/mipmap-xxhdpi_ic_launcher.webp.flat",
-        "source": "com.example.pantrypal.app-main-49:/mipmap-xxhdpi/ic_launcher.webp"
+        "merged": "/Users/haithamawad/.gradle/daemon/8.9/com.example.pantrypal.app-debug-47:/layout_dialog_edit_grocery.xml.flat",
+        "source": "/Users/haithamawad/.gradle/daemon/8.9/com.example.pantrypal.app-main-49:/layout/dialog_edit_grocery.xml"
     },
     {
-        "merged": "com.example.pantrypal.app-debug-47:/layout_fragment_add_grocery.xml.flat",
-        "source": "com.example.pantrypal.app-main-49:/layout/fragment_add_grocery.xml"
+        "merged": "/Users/haithamawad/.gradle/daemon/8.9/com.example.pantrypal.app-debug-47:/mipmap-mdpi_ic_launcher.webp.flat",
+        "source": "/Users/haithamawad/.gradle/daemon/8.9/com.example.pantrypal.app-main-49:/mipmap-mdpi/ic_launcher.webp"
     },
     {
-        "merged": "com.example.pantrypal.app-debug-47:/layout_item_grocery.xml.flat",
-        "source": "com.example.pantrypal.app-main-49:/layout/item_grocery.xml"
+        "merged": "/Users/haithamawad/.gradle/daemon/8.9/com.example.pantrypal.app-debug-47:/layout_activity_login.xml.flat",
+        "source": "/Users/haithamawad/.gradle/daemon/8.9/com.example.pantrypal.app-main-49:/layout/activity_login.xml"
     },
     {
-        "merged": "com.example.pantrypal.app-debug-47:/layout_fragment_recipes.xml.flat",
-        "source": "com.example.pantrypal.app-main-49:/layout/fragment_recipes.xml"
+        "merged": "/Users/haithamawad/.gradle/daemon/8.9/com.example.pantrypal.app-debug-47:/mipmap-hdpi_ic_launcher_round.webp.flat",
+        "source": "/Users/haithamawad/.gradle/daemon/8.9/com.example.pantrypal.app-main-49:/mipmap-hdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "com.example.pantrypal.app-debug-47:/mipmap-xxxhdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.pantrypal.app-main-49:/mipmap-xxxhdpi/ic_launcher_round.webp"
+        "merged": "/Users/haithamawad/.gradle/daemon/8.9/com.example.pantrypal.app-debug-47:/layout_fragment_item_detail.xml.flat",
+        "source": "/Users/haithamawad/.gradle/daemon/8.9/com.example.pantrypal.app-main-49:/layout/fragment_item_detail.xml"
     },
     {
-        "merged": "com.example.pantrypal.app-debug-47:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.pantrypal.app-main-49:/mipmap-xxhdpi/ic_launcher_round.webp"
+        "merged": "/Users/haithamawad/.gradle/daemon/8.9/com.example.pantrypal.app-debug-47:/layout_activity_main.xml.flat",
+        "source": "/Users/haithamawad/.gradle/daemon/8.9/com.example.pantrypal.app-main-49:/layout/activity_main.xml"
     },
     {
-        "merged": "com.example.pantrypal.app-debug-47:/layout_fragment_recipe_detail.xml.flat",
-        "source": "com.example.pantrypal.app-main-49:/layout/fragment_recipe_detail.xml"
+        "merged": "/Users/haithamawad/.gradle/daemon/8.9/com.example.pantrypal.app-debug-47:/mipmap-mdpi_ic_launcher_round.webp.flat",
+        "source": "/Users/haithamawad/.gradle/daemon/8.9/com.example.pantrypal.app-main-49:/mipmap-mdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "com.example.pantrypal.app-debug-47:/layout_fragment_pantry.xml.flat",
-        "source": "com.example.pantrypal.app-main-49:/layout/fragment_pantry.xml"
+        "merged": "/Users/haithamawad/.gradle/daemon/8.9/com.example.pantrypal.app-debug-47:/layout_fragment_pantry.xml.flat",
+        "source": "/Users/haithamawad/.gradle/daemon/8.9/com.example.pantrypal.app-main-49:/layout/fragment_pantry.xml"
     },
     {
-        "merged": "com.example.pantrypal.app-debug-47:/layout_activity_main.xml.flat",
-        "source": "com.example.pantrypal.app-main-49:/layout/activity_main.xml"
+        "merged": "/Users/haithamawad/.gradle/daemon/8.9/com.example.pantrypal.app-debug-47:/drawable_ic_launcher_foreground.xml.flat",
+        "source": "/Users/haithamawad/.gradle/daemon/8.9/com.example.pantrypal.app-main-49:/drawable/ic_launcher_foreground.xml"
     },
     {
-        "merged": "com.example.pantrypal.app-debug-47:/mipmap-hdpi_ic_launcher.webp.flat",
-        "source": "com.example.pantrypal.app-main-49:/mipmap-hdpi/ic_launcher.webp"
+        "merged": "/Users/haithamawad/.gradle/daemon/8.9/com.example.pantrypal.app-debug-47:/layout_fragment_recipes.xml.flat",
+        "source": "/Users/haithamawad/.gradle/daemon/8.9/com.example.pantrypal.app-main-49:/layout/fragment_recipes.xml"
     },
     {
-        "merged": "com.example.pantrypal.app-debug-47:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
-        "source": "com.example.pantrypal.app-main-49:/mipmap-anydpi-v26/ic_launcher_round.xml"
+        "merged": "/Users/haithamawad/.gradle/daemon/8.9/com.example.pantrypal.app-debug-47:/mipmap-xhdpi_ic_launcher_round.webp.flat",
+        "source": "/Users/haithamawad/.gradle/daemon/8.9/com.example.pantrypal.app-main-49:/mipmap-xhdpi/ic_launcher_round.webp"
     },
     {
-        "merged": "com.example.pantrypal.app-debug-47:/mipmap-anydpi-v26_ic_launcher.xml.flat",
-        "source": "com.example.pantrypal.app-main-49:/mipmap-anydpi-v26/ic_launcher.xml"
+        "merged": "/Users/haithamawad/.gradle/daemon/8.9/com.example.pantrypal.app-debug-47:/xml_backup_rules.xml.flat",
+        "source": "/Users/haithamawad/.gradle/daemon/8.9/com.example.pantrypal.app-main-49:/xml/backup_rules.xml"
+    },
+    {
+        "merged": "/Users/haithamawad/.gradle/daemon/8.9/com.example.pantrypal.app-debug-47:/mipmap-anydpi-v26_ic_launcher_round.xml.flat",
+        "source": "/Users/haithamawad/.gradle/daemon/8.9/com.example.pantrypal.app-main-49:/mipmap-anydpi-v26/ic_launcher_round.xml"
+    },
+    {
+        "merged": "/Users/haithamawad/.gradle/daemon/8.9/com.example.pantrypal.app-debug-47:/mipmap-xxxhdpi_ic_launcher.webp.flat",
+        "source": "/Users/haithamawad/.gradle/daemon/8.9/com.example.pantrypal.app-main-49:/mipmap-xxxhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "/Users/haithamawad/.gradle/daemon/8.9/com.example.pantrypal.app-debug-47:/mipmap-xxhdpi_ic_launcher_round.webp.flat",
+        "source": "/Users/haithamawad/.gradle/daemon/8.9/com.example.pantrypal.app-main-49:/mipmap-xxhdpi/ic_launcher_round.webp"
+    },
+    {
+        "merged": "/Users/haithamawad/.gradle/daemon/8.9/com.example.pantrypal.app-debug-47:/xml_data_extraction_rules.xml.flat",
+        "source": "/Users/haithamawad/.gradle/daemon/8.9/com.example.pantrypal.app-main-49:/xml/data_extraction_rules.xml"
+    },
+    {
+        "merged": "/Users/haithamawad/.gradle/daemon/8.9/com.example.pantrypal.app-debug-47:/layout_fragment_add_grocery.xml.flat",
+        "source": "/Users/haithamawad/.gradle/daemon/8.9/com.example.pantrypal.app-main-49:/layout/fragment_add_grocery.xml"
+    },
+    {
+        "merged": "/Users/haithamawad/.gradle/daemon/8.9/com.example.pantrypal.app-debug-47:/layout_activity_signup.xml.flat",
+        "source": "/Users/haithamawad/.gradle/daemon/8.9/com.example.pantrypal.app-main-49:/layout/activity_signup.xml"
+    },
+    {
+        "merged": "/Users/haithamawad/.gradle/daemon/8.9/com.example.pantrypal.app-debug-47:/mipmap-hdpi_ic_launcher.webp.flat",
+        "source": "/Users/haithamawad/.gradle/daemon/8.9/com.example.pantrypal.app-main-49:/mipmap-hdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "/Users/haithamawad/.gradle/daemon/8.9/com.example.pantrypal.app-debug-47:/mipmap-xhdpi_ic_launcher.webp.flat",
+        "source": "/Users/haithamawad/.gradle/daemon/8.9/com.example.pantrypal.app-main-49:/mipmap-xhdpi/ic_launcher.webp"
+    },
+    {
+        "merged": "/Users/haithamawad/.gradle/daemon/8.9/com.example.pantrypal.app-debug-47:/layout_item_grocery.xml.flat",
+        "source": "/Users/haithamawad/.gradle/daemon/8.9/com.example.pantrypal.app-main-49:/layout/item_grocery.xml"
     },
     {
         "merged": "com.example.pantrypal.app-debug-47:/layout_fragment_item_detail.xml.flat",
         "source": "com.example.pantrypal.app-main-49:/layout/fragment_item_detail.xml"
     },
     {
-        "merged": "com.example.pantrypal.app-debug-47:/drawable_ic_launcher_background.xml.flat",
-        "source": "com.example.pantrypal.app-main-49:/drawable/ic_launcher_background.xml"
+        "merged": "/Users/haithamawad/.gradle/daemon/8.9/com.example.pantrypal.app-debug-47:/layout_item_recipe.xml.flat",
+        "source": "/Users/haithamawad/.gradle/daemon/8.9/com.example.pantrypal.app-main-49:/layout/item_recipe.xml"
     },
     {
-        "merged": "com.example.pantrypal.app-debug-47:/xml_backup_rules.xml.flat",
-        "source": "com.example.pantrypal.app-main-49:/xml/backup_rules.xml"
+        "merged": "/Users/haithamawad/.gradle/daemon/8.9/com.example.pantrypal.app-debug-47:/layout_fragment_recipe_detail.xml.flat",
+        "source": "/Users/haithamawad/.gradle/daemon/8.9/com.example.pantrypal.app-main-49:/layout/fragment_recipe_detail.xml"
     },
     {
-        "merged": "com.example.pantrypal.app-debug-47:/layout_fragment_profile.xml.flat",
-        "source": "com.example.pantrypal.app-main-49:/layout/fragment_profile.xml"
+        "merged": "/Users/haithamawad/.gradle/daemon/8.9/com.example.pantrypal.app-debug-47:/layout_fragment_profile.xml.flat",
+        "source": "/Users/haithamawad/.gradle/daemon/8.9/com.example.pantrypal.app-main-49:/layout/fragment_profile.xml"
     },
     {
-        "merged": "com.example.pantrypal.app-debug-47:/layout_item_recipe.xml.flat",
-        "source": "com.example.pantrypal.app-main-49:/layout/item_recipe.xml"
-    },
-    {
-        "merged": "com.example.pantrypal.app-debug-47:/mipmap-xhdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.pantrypal.app-main-49:/mipmap-xhdpi/ic_launcher_round.webp"
-    },
-    {
-        "merged": "com.example.pantrypal.app-debug-47:/menu_bottom_navigation_menu.xml.flat",
-        "source": "com.example.pantrypal.app-main-49:/menu/bottom_navigation_menu.xml"
-    },
-    {
-        "merged": "com.example.pantrypal.app-debug-47:/mipmap-hdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.pantrypal.app-main-49:/mipmap-hdpi/ic_launcher_round.webp"
-    },
-    {
-        "merged": "com.example.pantrypal.app-debug-47:/layout_activity_signup.xml.flat",
-        "source": "com.example.pantrypal.app-main-49:/layout/activity_signup.xml"
-    },
-    {
-        "merged": "com.example.pantrypal.app-debug-47:/mipmap-mdpi_ic_launcher_round.webp.flat",
-        "source": "com.example.pantrypal.app-main-49:/mipmap-mdpi/ic_launcher_round.webp"
-    },
-    {
-        "merged": "com.example.pantrypal.app-debug-47:/xml_data_extraction_rules.xml.flat",
-        "source": "com.example.pantrypal.app-main-49:/xml/data_extraction_rules.xml"
-    },
-    {
-        "merged": "com.example.pantrypal.app-debug-47:/mipmap-mdpi_ic_launcher.webp.flat",
-        "source": "com.example.pantrypal.app-main-49:/mipmap-mdpi/ic_launcher.webp"
+        "merged": "/Users/haithamawad/.gradle/daemon/8.9/com.example.pantrypal.app-debug-47:/mipmap-xxhdpi_ic_launcher.webp.flat",
+        "source": "/Users/haithamawad/.gradle/daemon/8.9/com.example.pantrypal.app-main-49:/mipmap-xxhdpi/ic_launcher.webp"
     }
 ]

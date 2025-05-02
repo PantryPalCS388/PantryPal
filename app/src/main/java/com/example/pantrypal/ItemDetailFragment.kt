@@ -12,6 +12,7 @@ class ItemDetailFragment : DialogFragment() {
 
     private lateinit var groceryItem: GroceryItem
     private var deleteListener: (() -> Unit)? = null
+    private var editListener: ((GroceryItem) -> Unit)? = null
 
     companion object {
         fun newInstance(groceryItem: GroceryItem): ItemDetailFragment {
@@ -36,21 +37,30 @@ class ItemDetailFragment : DialogFragment() {
         groceryItem = arguments?.getParcelable("groceryItem")!!
 
         val nameTextView = view.findViewById<TextView>(R.id.tvDetailName)
-        val quantityTextView = view.findViewById<TextView>(R.id.tvDetailQuantity)
         val expirationDateTextView = view.findViewById<TextView>(R.id.tvDetailExpirationDate)
         val deleteButton = view.findViewById<Button>(R.id.btnDeleteItem)
+        val editButton = view.findViewById<Button>(R.id.btnEdit)
 
-        nameTextView.text = groceryItem.name
-        quantityTextView.text = "${groceryItem.quantity} ${groceryItem.unit}"
-        expirationDateTextView.text = groceryItem.expirationDate
+        // Updated formatting
+        nameTextView.text = "Item: ${groceryItem.name} (${groceryItem.quantity} ${groceryItem.unit})"
+        expirationDateTextView.text = "Expires: ${groceryItem.expirationDate}"
 
         deleteButton.setOnClickListener {
-            deleteListener?.invoke() // Trigger the delete action
-            dismiss() // Close the dialog
+            deleteListener?.invoke()
+            dismiss()
+        }
+
+        editButton.setOnClickListener {
+            editListener?.invoke(groceryItem)
+            dismiss()
         }
     }
 
     fun setDeleteListener(listener: () -> Unit) {
         deleteListener = listener
+    }
+
+    fun setEditListener(listener: (GroceryItem) -> Unit) {
+        editListener = listener
     }
 }
